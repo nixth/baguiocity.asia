@@ -11,7 +11,7 @@ module.exports = function(grunt) {
       dev: {
         options: {
           paths: ["static/css"],
-          yuicompress: false
+          yuicompress: true
         },
         files: {
           "static/css/default.css": "static/less/default.less"
