@@ -89,17 +89,42 @@
     }
 }
 
-@media only screen and (min-width : 321px) {
+@media only screen and (min-width : 321px) and (max-width: 768px) {
     header {
         padding: 0 10px;
     }
-}
 
-@media only screen and (min-width : 480px) and (max-width: 600px) {
-    header {
-        padding: 0 10px;
-        img {
-            margin: 0 auto;
+    .marketing {
+        article {
+            .item {
+                a {
+                    padding-top: 0;
+                    font-size: 8em;
+                    width: 222px;
+                    margin: 0 auto;
+                }
+
+            }
+            .create {
+                a {
+                    height: 222px;
+                }
+            }
+            .search {
+                a {
+                    height: 222px;
+                }
+            }
+            .transact {
+                a {
+                    height: 222px;
+                }
+            }
+            .enjoy {
+                a {
+                    height: 222px;
+                }
+            }
         }
     }
 }
@@ -148,10 +173,6 @@
                     font-size: 8em;
                     width: 222px;
                     margin: 0 auto;
-                }
-
-                p {
-                    padding: 0 50px;
                 }
             }
             .create {
