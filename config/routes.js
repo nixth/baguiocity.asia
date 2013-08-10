@@ -1,17 +1,7 @@
-(function() {
-  "use strict";
+"use strict";
 
-  var IndexController = require('../controllers/IndexController');
+var IndexController = require('../controllers/IndexController');
 
-  module.exports = function() {
-
-    return {
-      initialize: function(app) {
-
-        // Index
-        app.get('/', IndexController.index);
-
-      }
-    };
-  }();
-}());
+module.exports.initialize = function(app) {
+  app.get('/', IndexController.index);
+};

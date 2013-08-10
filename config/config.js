@@ -1,39 +1,28 @@
-(function() {
-  "use strict";
+"use strict";
 
-  var path = require('path'),
-    engines = require('consolidate');
+var path = require('path'),
+  engines = require('consolidate');
 
-  module.exports = function() {
+module.exports.initialize = function(app, express) {
 
-    return {
-      initialize: function(app, express) {
+  app.set('port', process.env.PORT || 3000);
+  app.set('views', __dirname + '/views');
+  app.engine('html', engines.hogan);
+  app.set('view engine', 'html');
+  app.use(express.favicon());
+  app.use(express.logger('dev'));
+  app.use(express.cookieParser());
+  app.use(express.bodyParser());
+  app.use(express.session({
+    secret: 'QWERTY12345UIOP67890'
+  }));
+  app.use(express.methodOverride());
+  app.use(app.router);
 
-        // all environments
-        app.set('port', process.env.PORT || 3000);
-        app.set('views', __dirname + '/views');
-        app.engine('html', engines.hogan);
-        app.set('view engine', 'html');
-        app.use(express.favicon());
-        app.use(express.logger('dev'));
-        app.use(express.cookieParser());
-        app.use(express.bodyParser());
-        app.use(express.session({
-          secret: 'QWERTY12345UIOP67890'
-        }));
-        app.use(express.methodOverride());
-        app.use(app.router);
+  app.use('/static', express.static(path.join(__dirname, '..', 'static')));
 
-        app.use('/static', express.static(path.join(__dirname, '..', 'static')));
+  if ('development' == app.get('env')) {
+    app.use(express.errorHandler());
+  }
 
-        // development only
-        if ('development' == app.get('env')) {
-          app.use(express.errorHandler());
-        }
-
-      }
-    };
-
-  }();
-
-}());
+};

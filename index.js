@@ -2,11 +2,10 @@
  * Module dependencies.
  */
 
-var express = require('express'),
-  config = require('./config/config'),
-  routes = require('./config/routes'),
-  http = require('http');
-
+var express = require('express');
+var config = require('./config/config');
+var routes = require('./config/routes');
+var http = require('http');
 var app = express();
 
 config.initialize(app, express);
